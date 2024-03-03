@@ -1,14 +1,12 @@
-import Head from "next/head";
+
+import { Button, Htag } from "@/components";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Проверка title</title>
-      </Head>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-
-      </main>
-    </>
+    <div>
+      <Htag tag="h1">Htag пример</Htag>
+      <Button appearance="primary" arrow="right">Привет</Button>
+      <Button appearance="ghost" arrow="down">Привет ghost</Button>
+    </div>
   );
 }
