@@ -1,5 +1,5 @@
 
-import { Button, Htag, P } from "@/components";
+import { Button, Htag, P, Tag } from "@/components";
 
 export default function Home() {
   return (
@@ -10,6 +10,9 @@ export default function Home() {
       <P size="l">Большой</P>
       <P>Средней</P>
       <P size="s">Маленький</P>
+      <Tag size="m" color="red">Тег тест</Tag>
+      <Tag color="green">Тег тест</Tag>
+      <Tag color="primary">Тег тест</Tag>
     </div>
   );
 }
