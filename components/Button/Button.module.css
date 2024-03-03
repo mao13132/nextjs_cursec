@@ -42,9 +42,9 @@
     transition: all 0.2s;
 }
 .icon {
-    width:70%;
-    height:70%;
+    width:10px;
     color:#ff0000;
+    background: none;
     overflow:hidden;
 }
 .primary svg {

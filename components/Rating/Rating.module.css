@@ -1,0 +1,19 @@
+.icon_star {
+    height: 30px;
+
+}
+
+.filled img {
+    fill: var(--primary);
+    background: #d3d3d3;
+    overflow: hidden;
+}
+
+.star img {
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.editable {
+    cursor: pointer;
+}
