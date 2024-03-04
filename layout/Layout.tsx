@@ -1,22 +1,31 @@
+import { FunctionComponent } from 'react';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
-import style from './Layout.module.css';
+import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.props';
 import { Sidebar } from './Sidebar/Sidebar';
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
     return (
-        <>
-            <Header />
+        <div className={styles['wrapper']}>
+            <Header className={styles['header']} />
 
-            <div>
-                <Sidebar />
+            <Sidebar className={styles['sidebar']} />
 
-                <div>{children}</div>
+            <div className={styles['body']}>{children}</div>
 
-            </div>
-
-            <Footer />
-        </>
+            <Footer className={styles['footer']} />
+        </div>
     );
+};
+
+/* Функция высшего порядка */
+export const withLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
+    return function withLayoutComponent(props: T): JSX.Element {
+        return (
+            <Layout>
+                <Component {...props} />
+            </Layout>
+        );
+    }
 };
