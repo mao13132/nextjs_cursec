@@ -13,7 +13,7 @@ export const Rating = ({ isEditable = false, rating, setRating, children, ...pro
     const constructRating = (currentRating: number) => {
         const updateArray = ratingArray.map((rating_: JSX.Element, idx: number) => {
             return (
-                <span
+                <span key={idx}
                     className={cn(styles['star'],
                         {
                             [styles['filled']]: idx < currentRating,
