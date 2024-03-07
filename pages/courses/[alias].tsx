@@ -6,6 +6,7 @@ import axios from 'axios';
 import { TopPageModel } from "@/interfaces/page.omterface";
 import { ParsedUrlQuery } from "querystring";
 import { ProductModel } from "@/interfaces/product.interface";
+import { MenuItem } from "@/interfaces/menu.interface";
 
 function Course({ menu, page, products }: CourseProps) {
 
@@ -26,7 +27,7 @@ export default withLayout(Course);
 export const getStaticPaths = async () => {
   /* Получаю меню категорий */
   const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/find', {
-    firstCategory
+    firstCategory: 1
   });
 
   return {
@@ -66,7 +67,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
   return {
     props: {
       menu,
-      firstCategory,
+      firstCategory: 0,
       page,
       products
     }

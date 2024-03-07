@@ -4,6 +4,7 @@ import { withLayout } from "@/layout/Layout";
 import { GetStaticProps } from "next";
 import { useState } from "react";
 import axios from 'axios';
+import { MenuItem } from "@/interfaces/menu.interface";
 
 function Home({menu, firstCategory}: HomeProps) {
   const [rating, setRating] = useState<number>(4);
@@ -21,9 +22,7 @@ function Home({menu, firstCategory}: HomeProps) {
       <Tag color="primary">Тег тест</Tag>
       <Rating rating={rating} isEditable setRating={setRating}></Rating>
       
-      <ul>
-        {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
-      </ul>
+      
     </>
   );
 }

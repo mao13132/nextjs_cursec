@@ -1,5 +1,5 @@
 import { TopLevelCategory } from "@/interfaces/page.omterface";
-import { createContext } from "react";
+import { ReactNode, createContext, useState, PropsWithChildren } from "react";
 
 export interface IAppContext {
     menu: MenuItem[],
@@ -7,4 +7,22 @@ export interface IAppContext {
     setMenu?: (newMenu: MenuItem[]) => void;
 };
 
-export const AppContext = createContext<>();
+export const AppContext = createContext<IAppContext>(
+    {
+        menu: [],
+        firstCategory: TopLevelCategory.Courses,
+    }
+);
+
+/* export const AppContextProvider = ({ menu, firstCategory, children }: IAppContext & { children: ReactNode }): JSX.Element => { */
+export const AppContextProvider = ({ menu, firstCategory, children }: PropsWithChildren<IAppContext>): JSX.Element => {
+    const [menuState, setMenuState] = useState<MenuItem[]>(menu);
+
+    const setMenu = (newMenu: MenuItem[]) => {
+        setMenuState(newMenu);
+    };
+
+    return <AppContext.Provider value={{menu: menuState, firstCategory, setMenu}}>
+        {children}
+    </AppContext.Provider>
+};
