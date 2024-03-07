@@ -1,3 +1,4 @@
+import { MenuItem } from "@/interfaces/menu.interface";
 import { TopLevelCategory } from "@/interfaces/page.omterface";
 import { ReactNode, createContext, useState, PropsWithChildren } from "react";
 
