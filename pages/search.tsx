@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     const firstCategory = 0;
 
     const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/find', {
-        firstCategory: 1
+        firstCategory
     })
 
     return {

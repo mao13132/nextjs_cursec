@@ -10,7 +10,7 @@ export interface TopPageAdvantage {
     title: string;
     description: string;
   }
-  interface HhData {
+export interface HhData {
     _id: string;
     count: number;
     juniorSalary: number;
@@ -25,13 +25,13 @@ export interface TopPageAdvantage {
     alias: string;
     title: string;
     category: string;
-    seoText: string;
+    seoText?: string;
     tagsTitle: string;
     metaTitle: string;
     metaDescription: string;
     firstCategory: TopLevelCategory;
-    advantages: TopPageAdvantage[];
+    advantages?: TopPageAdvantage[];
     createdAt: string;
     updatedAt: string;
-    hh: HhData;
+    hh?: HhData;
   }

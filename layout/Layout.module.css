@@ -15,7 +15,8 @@
     display: none;
 }
 .sidebar {
-    grid-area: sidebar;}
+    grid-area: sidebar;
+}
 
 .body {
     grid-area: body;}
@@ -32,7 +33,7 @@
         "footer"
     }
     .sidebar {
-        display: none;
+        display: none !important;
     }
     .header {
         display: block;
