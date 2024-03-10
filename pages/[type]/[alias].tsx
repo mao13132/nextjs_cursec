@@ -1,6 +1,6 @@
 
 import { withLayout } from "@/layout/Layout";
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { useState } from "react";
 import axios from 'axios';
 import { TopLevelCategory, TopPageModel } from "@/interfaces/page.omterface";
@@ -9,21 +9,24 @@ import { ProductModel } from "@/interfaces/product.interface";
 import { MenuItem } from "@/interfaces/menu.interface";
 import { firstLevelMenu } from "@/helpers/helpers";
 import { TopPageComponent } from "@/page-components";
+import Head from "next/head";
 
 function TopPage({ firstCategory, page, products }: TopPageProps) {
 
-  return <TopPageComponent 
-  firstCategory={firstCategory} 
-  page={page} 
-  products={products} 
-  />
+  return (<>
+    <TopPageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    /></>)
+    
 }
 
 export default withLayout(TopPage);
 
 /* Функция получения статических путей категорий */
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 
   let paths: string[] = [];
 

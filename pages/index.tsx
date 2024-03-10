@@ -1,12 +1,12 @@
 
-import { Button, Htag, P, Rating, Tag } from "@/components";
+import { Button, Htag, Input, P, Rating, Tag, TextAria } from "@/components";
 import { withLayout } from "@/layout/Layout";
 import { GetStaticProps } from "next";
 import { useState } from "react";
 import axios from 'axios';
 import { MenuItem } from "@/interfaces/menu.interface";
 
-function Home({menu, firstCategory}: HomeProps) {
+function Home({ menu, firstCategory }: HomeProps) {
   const [rating, setRating] = useState<number>(4);
 
   return (
@@ -21,8 +21,10 @@ function Home({menu, firstCategory}: HomeProps) {
       <Tag color="green">Тег тест</Tag>
       <Tag color="primary">Тег тест</Tag>
       <Rating rating={rating} isEditable setRating={setRating}></Rating>
-      
-      
+      <Input placeholder="sssss" />
+      <TextAria placeholder="test" />
+
+
     </>
   );
 }
@@ -44,7 +46,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     props: {
       menu,
       firstCategory
-    }
+    },
+    revalidate: 60,
   }
 };
 
