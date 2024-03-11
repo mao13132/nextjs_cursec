@@ -3,9 +3,8 @@
     grid-template-columns: auto 1fr auto;
     align-items: baseline;
     justify-items: left;
+    margin-bottom: 30px;
     gap: 20px;
-}
-.wrapper {
 }
 .hhTitle {
     display: grid;
@@ -13,4 +12,11 @@
     align-items: baseline;
     justify-items: left;
     gap: 20px;
+}
+@media screen and (max-width: 640px) {
+    .title {
+        
+    display: grid;
+    grid-template-columns: auto 1fr;
+    }
 }

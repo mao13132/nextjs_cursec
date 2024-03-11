@@ -8,9 +8,11 @@
     align-self: center;
     font-weight: bold;
 }
-.vline {
-    outline: none;
+.vline { 
+    width: 1px;
+    height: 100%;
+    /* outline: none;
     border-left: 1px solid var(--grey-light);
-    transform: rotate(90deg);
+    transform: rotate(90deg); */
 }
 

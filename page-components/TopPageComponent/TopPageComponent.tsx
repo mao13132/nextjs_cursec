@@ -1,4 +1,4 @@
-import { Advantages, Card, HhData, Htag, P, Sort, Tag } from "@/components";
+import { Advantages, Card, HhData, Htag, P, Product, Sort, Tag } from "@/components";
 import { TopPageComponentProps } from "./TopPageComponent.props";
 import styles from './TopPageComponent.module.css';
 import { SortEnum } from "@/components/Sort/Sort.props";
@@ -10,8 +10,8 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 
     const [{ products: sortedProducts, sort: reducSort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating })
 
-    const setSort = (sort: SortEnum) => { 
-        dispatchSort({ type: sort})
+    const setSort = (sort: SortEnum) => {
+        dispatchSort({ type: sort })
     };
 
     return (
@@ -29,11 +29,8 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 
             <div>
                 {sortedProducts && sortedProducts.map(items => (
-                    <div key={items._id}>
+                    <Product key={items._id} product={items} />
 
-                        {items.title}
-
-                    </div>
                 ))}
             </div>
 
@@ -57,7 +54,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
             {page && page.seoText && <div className={styles['seo']} dangerouslySetInnerHTML={{ __html: page.seoText }} />}
 
             <Htag tag="h2">Получаемые навыки</Htag>
-            
+
             {page && page.tags.map(tag => <Tag color="primary" key={tag}>{tag}</Tag>)}
 
         </div>
