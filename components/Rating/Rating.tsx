@@ -1,9 +1,9 @@
 import { RatingProps } from "./Rating.props";
 import styles from './Rating.module.css';
 import cn from 'classnames';
-import { useEffect, useState, KeyboardEvent } from "react";
+import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef } from "react";
 
-export const Rating = ({ isEditable = false, rating, setRating, children, ...props }: RatingProps): JSX.Element => {
+export const Rating = forwardRef(({ isEditable = false, rating, setRating, children, ...props }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
@@ -56,9 +56,9 @@ export const Rating = ({ isEditable = false, rating, setRating, children, ...pro
         setRating(new_rating);
     }
 
-    return (<div {...props}>
+    return (<div {...props} ref={ref}>
         {ratingArray.map((rating_, idx) => (
             <span key={idx}>{rating_}</span>
         ))}
     </div>);
-};
+});
