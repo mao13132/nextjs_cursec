@@ -1,7 +1,7 @@
 import { ProductProps } from "./Product.props";
 import cn from 'classnames';
 import styles from './Product.module.css';
-import { Button, Card, Divider, Rating, Tag } from "..";
+import { Button, Card, Divider, Rating, Review, Tag } from "..";
 import { devOfNum, priceRu } from "@/helpers/helpers";
 import Image from 'next/image';
 import { useState } from "react";
@@ -81,10 +81,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 
                 <div className={styles['actions']}>
                     <Button appearance="primary">Узнать подробнее</Button>
-                    <Button appearance="ghost" 
-                    arrow={isReviewOpened ? 'down' : 'right'} 
-                    className={styles['reviewButton']}
-                    onClick={() => setIsReviewOpened(!isReviewOpened)}
+                    <Button appearance="ghost"
+                        arrow={isReviewOpened ? 'down' : 'right'}
+                        className={styles['reviewButton']}
+                        onClick={() => setIsReviewOpened(!isReviewOpened)}
                     >Читать отзывы</Button>
                 </div>
 
@@ -95,8 +95,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
             <Card color="blue" className={cn(styles['reviews'], {
                 [styles['opened']]: isReviewOpened,
                 [styles['closed']]: !isReviewOpened,
-            })}>Отзыв</Card>
-            
+            })}>
+                {product.reviews.map(review_ => <><Review key={review_._id} review={review_} /><Divider /></>)}
+            </Card>
+
         </>
     );
 };

@@ -12,3 +12,4 @@ export * from './TextAria/TextAria';
 export * from './Search/Search';
 export * from './Product/Product';
 export * from './DIvider/DIvider';
+export * from './Review/Review';
