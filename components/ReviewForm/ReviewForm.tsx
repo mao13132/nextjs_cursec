@@ -8,7 +8,8 @@ import { IReviewForm } from './ReviewForm.interface';
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
 
-    const { register, control: myControl, handleSubmit } = useForm<IReviewForm>();
+    /* Получаю функцию регистрации полей для формы, handleSubmit функция сабмита формы formState - функция состояния формы */
+    const { register, control: myControl, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
     const myOnSybmit = (data: IReviewForm) => {
         console.log(data)
@@ -18,9 +19,15 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
         <form onSubmit={handleSubmit(myOnSybmit)}>
             <div className={cn(styles['reviewForm'], className)} {...props} >
 
-                <Input {...register('name')} placeholder='Имя' />
+                <Input {...register('name', { required: { value: true, message: 'Заполните имя' } })}
+                    placeholder='Имя'
+                    error={errors.name}
+                />
 
-                <Input {...register('title')} className={styles['title']} placeholder='Заголовок отзыва' />
+                <Input {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
+                    className={styles['title']}
+                    error={errors.title}
+                    placeholder='Заголовок отзыва' />
 
                 <div className={styles['rating']}>
                     <span>Оцена:</span>
@@ -34,7 +41,10 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 
                 </div>
 
-                <TextAria {...register('description')} placeholder='Текст отзыва' className={styles['description']} />
+                <TextAria {...register('description', { required: { value: true, message: 'Заполните описание' } })}
+                    placeholder='Текст отзыва'
+                    error={errors.description}
+                    className={styles['description']} />
 
                 <div className={styles['submit']}>
                     <Button appearance='primary'>Отправить</Button>
